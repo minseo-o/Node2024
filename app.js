@@ -9,9 +9,15 @@ app.use('/html' , express.static(path.join(__dirname, 'html')))
 app.get('/', (req , res) =>{
     res.send('Hello World')
 })
+//localhost:3000/test/
+app.get('test/:name', (req,res) =>{
+    console.log('path', req.path)
+    console.log('params' , req.params)
+    console.log('query' ,  req.query)
+    res.send('콘솔보세요')
+})
 
 app.listen(port, () => {
     console.log(`listeninf on port ${port}`)
-    console.log(express.static(path.join(__dirname, 'html')))
+    console.log(path.join(__dirname, 'html'))
 })
-
