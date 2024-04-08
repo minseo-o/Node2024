@@ -9,11 +9,11 @@ app.use('/html' , express.static(path.join(__dirname, 'html')))
 app.get('/', (req , res) =>{
     res.send('Hello World')
 })
-//localhost:3000/test/
-app.get('test/:name', (req,res) =>{
-    console.log('path', req.path)
-    console.log('params' , req.params)
-    console.log('query' ,  req.query)
+//localhost:3000/test/minseo?lang=ko
+app.get('/test/:name', (req,res) =>{
+    console.log('path', req.path)   //'test/minseo'
+    console.log('params' , req.params)  //{name: 'minseo'}
+    console.log('query' ,  req.query)   //{lang: 'ko}
     res.send('콘솔보세요')
 })
 
