@@ -5,8 +5,18 @@ const middle1 = require('./my_modules/middle1')
 //arg로 경로를 지정하지 않으면, 모든 경로에 대해.처리
 app.use(middle1)
 
-app.get('/', (req, res)=> {
-    res.send('Hello world')
+//dog.start().jump().eat()
+
+app.get('/', (req, res,next)=> {
+    req.app.locals.message = 'Hello World'
+    next()
+})
+
+app.get('/',(req,res) =>{
+    req.app.locals.additionalmessage = 'swag'
+    const message =  req.app.locals.message + req.app.locals.additionalmessage
+    console.log(message)
+    res.send(message)
 })
 
 app.listen(3000)
